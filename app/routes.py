@@ -1,8 +1,8 @@
 from fastapi import UploadFile, File, APIRouter, Form
 from app.schemas import  SuccessResponse, ErrorResponse
 from datetime import datetime
-import fitz  # PyMuPDF
 from app.gemini import summarize_resume, ats_score_by_role
+import fitz  # PyMuPDF
 
 router = APIRouter()
 
@@ -71,7 +71,7 @@ async def analyze_ats_score(
         resume_text = ""
         for page in doc:
             resume_text += page.get_text()
-        print(resume_text)
+        # print(resume_text)
 
         score_feedback = await ats_score_by_role(resume_text, role)
 
